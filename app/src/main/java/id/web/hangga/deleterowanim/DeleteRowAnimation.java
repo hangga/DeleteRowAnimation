@@ -14,7 +14,7 @@ public class DeleteRowAnimation extends Animation {
 
     public static int ALPHA = 0;
     public static int SWIPE_LEFT = 1;
-    public static int SWIPE_UP = 1;
+    public static int SWIPE_UP = 2;
 
     public void setAnimType(int animType) {
         this.animType = animType;
