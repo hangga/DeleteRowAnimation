@@ -11,6 +11,17 @@ import android.widget.LinearLayout;
  */
 
 public class DeleteRowAnimation extends Animation {
+
+    public static int ALPHA = 0;
+    public static int SWIPE_LEFT = 1;
+    public static int SWIPE_UP = 1;
+
+    public void setAnimType(int animType) {
+        this.animType = animType;
+    }
+
+    private int animType = ALPHA; // default
+
     final int startWidth;
     final int targetWidth;
 
@@ -22,6 +33,8 @@ public class DeleteRowAnimation extends Animation {
 
     private DeleteRowAnimation deleteRowAnimation;
     private View view;
+
+
 
     public DeleteRowAnimation(final View view) {
         deleteRowAnimation = this;
@@ -57,14 +70,18 @@ public class DeleteRowAnimation extends Animation {
 
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
-        float newAlpha = (startAlpha + (targetAlpha - startAlpha) * interpolatedTime);
-        view.setAlpha(newAlpha);
-
-        int newHeight = (int) (startHeight + (targetHeight - startHeight) * interpolatedTime);
-        int newWidth = (int) (startWidth + (targetWidth - startWidth) * interpolatedTime);
-        view.getLayoutParams().height = newHeight;
-        view.getLayoutParams().width = newWidth;
-        view.requestLayout();
+        if (this.animType == ALPHA) {
+            float newAlpha = (startAlpha + (targetAlpha - startAlpha) * interpolatedTime);
+            view.setAlpha(newAlpha);
+        } else if (this.animType == SWIPE_LEFT){
+            int newWidth = (int) (startWidth + (targetWidth - startWidth) * interpolatedTime);
+            view.getLayoutParams().width = newWidth;
+            view.requestLayout();
+        } else if (this.animType == SWIPE_UP){
+            int newHeight = (int) (startHeight + (targetHeight - startHeight) * interpolatedTime);
+            view.getLayoutParams().height = newHeight;
+            view.requestLayout();
+        }
     }
 
     @Override
