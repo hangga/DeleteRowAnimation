@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DeleteRowAnimation anim = new DeleteRowAnimation(child);
+                anim.setAnimType(DeleteRowAnimation.ALPHA);
                 anim.setDuration(1000);
                 child.startAnimation(anim);
             }
