@@ -22,5 +22,21 @@ for (int i = 0; i < 20; i++){
 }
     
 ```
+#SWIPE LEFT
+```
+DeleteRowAnimation anim = new DeleteRowAnimation(child);
+anim.setAnimType(DeleteRowAnimation.SWIPE_LEFT);
+anim.setDuration(1000);
+child.startAnimation(anim);
+```
 
 ![alt tag](https://github.com/hangga/DeleteRowAnimation/blob/master/delete-row_1.gif)
+
+#ALPHA
+```
+DeleteRowAnimation anim = new DeleteRowAnimation(child);
+anim.setAnimType(DeleteRowAnimation.ALPHA);
+anim.setDuration(1000);
+child.startAnimation(anim);
+```
+![alt tag](https://github.com/hangga/DeleteRowAnimation/blob/master/delete-row-alpha.gif)
